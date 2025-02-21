@@ -16,7 +16,7 @@ using namespace std;
                        "cgi_path /usr/bin/python3 /bin/shell\n" \
                        "cgi_ext .py .sh"
 
-#define SAMPLE_HEADER "GET /cgi-bin/script.py?name=Test&age=20 HTTP/1.1"
+#define SAMPLE_HEADER "POST /cgi-bin/script.py?name=Test&age=20 HTTP/1.1"
 
 struct reqStruct {
     string method;
@@ -35,6 +35,7 @@ public:
     CGI(const string& config, const string& header);
     ~CGI();
     void handleGET();
+	void handlePOST();
 };
 
 // CGIHelpers.cpp
@@ -43,5 +44,5 @@ string getValue(const string& str);
 void parseCGIConfig(const string& config, string& rootDir, map<string, string>& exec);
 void parseRequest(const string& request, reqStruct& req);
 
-// CGIMethodsHandling.cpp
-void handleGET();
+// TO SORT
+string getScriptLocation(const string& rootDir, const string& scriptDir);

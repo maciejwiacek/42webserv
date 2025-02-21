@@ -1,12 +1,20 @@
 #include "CGI.hpp"
 
-CGI::CGI(const std::string &config, const std::string &header) {
+CGI::CGI(const string &config, const string &header) {
     parseCGIConfig(config, this->_rootDir, this->_exec);
     parseRequest(header, this->_request);
     if (this->_request.method == "GET") {
-        handleGET();
+		try {
+			handleGET();
+		} catch (std::exception& e) {
+			cout << e.what() << endl;
+		}
     } else if (this->_request.method == "POST") {
-        cout << "POST\n";
+	    try {
+		    handlePOST();
+	    } catch (std::exception& e) {
+		    cout << e.what() << endl;
+	    }
     } else if (this->_request.method == "DELETE") {
         cout << "DELETE\n";
     } else {
