@@ -1,8 +1,8 @@
-CC       := g++
-CFLAGS   := -Wall -Wextra -Werror -std=c++98
-SRC      := $(wildcard *.cpp)
-OBJ      := $(SRC:.cpp=.o)
-NAME     := cgi
+CC		:= g++
+CFLAGS	:= -Wall -Wextra -Werror
+SRC		:= $(wildcard *.cpp)
+OBJ		:= $(SRC:.cpp=.o)
+NAME	:= cgi
 
 all: $(NAME)
 
@@ -13,7 +13,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ)
 
 fclean: clean
 	rm -f $(NAME) cgi_output.txt
